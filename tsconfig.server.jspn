@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.app.json",
+  "files": [
+    "apps/web/src/main.server.ts"
+  ]
+}
