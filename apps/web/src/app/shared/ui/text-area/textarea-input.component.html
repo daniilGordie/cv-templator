@@ -1,0 +1,13 @@
+<mat-form-field class="form-field">
+  <mat-label>{{ label }}</mat-label>
+  <textarea
+    matInput
+    [value]="valueSignal()"
+    (input)="onInput($event)"
+    (blur)="touchedSignal.set(true)"
+  >
+  </textarea>
+  @if (errorSignal()) {
+  <mat-error>{{ errorSignal() }}</mat-error>
+  }
+</mat-form-field>

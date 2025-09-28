@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ResumeConstructorPage } from "./features/resume-constructor/resume-constructor.page";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  template: `<h1>It works</h1>`,
+  templateUrl: './app.component.html',
+  imports: [ResumeConstructorPage],
 })
 export class AppComponent {
-  title = 'cv-templator';
+  
 }

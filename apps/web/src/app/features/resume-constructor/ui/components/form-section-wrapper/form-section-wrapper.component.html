@@ -1,0 +1,40 @@
+<div class="section-wrapper">
+  <h2>{{ sectionName | camelCaseToWords}}</h2>
+  @for (field of fields; track $index) {
+    @if (field.type === 'text') {
+      <text-input
+      [label]="field.name"
+      [valueSignal]="fieldSignals[field.name].value"
+      [errorSignal]="fieldSignals[field.name].error"
+      [touchedSignal]="fieldSignals[field.name].touched"
+    >
+    </text-input>
+    }@else if (field.type === 'textarea') {
+      <textarea-input
+      [label]="field.name"
+      [valueSignal]="fieldSignals[field.name].value"
+      [errorSignal]="fieldSignals[field.name].error"
+      [touchedSignal]="fieldSignals[field.name].touched"
+    >
+    </textarea-input>
+    } @else if (field.type === 'date') {
+      <date-input
+      [label]="field.name"
+      [valueSignal]="fieldSignals[field.name].value"
+      [errorSignal]="fieldSignals[field.name].error"
+      [touchedSignal]="fieldSignals[field.name].touched"
+    >
+    </date-input>
+    } @else if (field.type === 'select') {
+      <select-input
+      [label]="field.name"
+      [options]="field.options || []"
+      [valueSignal]="fieldSignals[field.name].value"
+      [errorSignal]="fieldSignals[field.name].error"
+      [touchedSignal]="fieldSignals[field.name].touched"
+    >
+    </select-input>
+    }
+  }
+    
+</div>

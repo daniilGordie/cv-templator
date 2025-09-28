@@ -1,0 +1,12 @@
+<div class="form">
+  @for(section of sections; track section.id) {
+    <form-section-wrapper
+        [sectionName]="section.name"
+        [fields]="sectionDictionary[section.name]"
+        [fieldSignals]="sectionSignals[section.name]"
+      >
+      </form-section-wrapper>
+  }
+      
+      <button (click)="onSubmit()">Submit</button>
+    </div>

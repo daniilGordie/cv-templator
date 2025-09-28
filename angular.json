@@ -32,10 +32,15 @@
             "scripts": [],
             "server": "apps/web/src/main.server.ts",
             "browser": "apps/web/src/main.ts",
-            "prerender": true
+            "prerender": true,
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules"]
+            }
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "outputHashing": "all",
               "budgets": [
                 {
                   "type": "initial",
@@ -47,8 +52,7 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
               "optimization": false,
@@ -92,7 +96,10 @@
             "styles": [
               "apps/web/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules"]
+            }
           }
         }
       }
