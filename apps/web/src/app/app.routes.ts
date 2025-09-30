@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { ResumeConstructorPage } from './features/resume-constructor/resume-constructor.page';
+import { PersonalInfoFormComponent } from './features/resume-constructor/ui/components/personal-info-form/personal-info-form.component';
 
 export const routes: Routes = [
   {
-    path: 'resume-constructor',
-    component: ResumeConstructorPage
+    path: 'general-info',
+    component: PersonalInfoFormComponent,
   },
   {
     path: '',
-    redirectTo: '/resume-constructor',
-    pathMatch: 'full'
-  }
+    redirectTo: '/general-info',
+    pathMatch: 'full',
+  },
 ];

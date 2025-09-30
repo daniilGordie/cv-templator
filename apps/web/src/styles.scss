@@ -3,7 +3,9 @@
 :root {
   --dark-color: #000000;
   --light-color: #ffffff;
-  --primary-color: #ae7aff;
+  --primary-color: #d727ab;
+  --light-grey-color: #dedede;
+  --grey-color: #b6b3b3;
   --error-color: #f44336;
 }
 
@@ -39,8 +41,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background: var(--dark-color);
-  color: var(--light-color);
+  color: var(--dark-color);
 }
 
 a:not([class]) {
@@ -66,9 +67,10 @@ select {
 .mat-mdc-input-element:-webkit-autofill,
 .mat-mdc-input-element:-webkit-autofill:hover,
 .mat-mdc-input-element:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px var(--primary-color) inset !important; 
-  -webkit-text-fill-color: var(--light-color);
+  -webkit-box-shadow: 0 0 0 1000px var(--light-color) inset !important; 
+  -webkit-text-fill-color: var(--dark-color);
   transition: background-color 0s ease-in-out 0s !important;
+  padding-left: 10px;
 }
 
 
@@ -81,42 +83,7 @@ select {
   }
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #e42ec8 0%, #9b30ff 100%);
-  border-radius: 12px;
-}
 
-.form-field {
-  width: 100%;
-}
-
-button {
-  border: none;
-  background: var(--dark-color);
-  color: var(--light-color);
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 24px;
-  align-self: flex-start;
-  padding: 0.6rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover:not(:disabled) {
-  border: 1px solid var(--light-color);
-}
-
-.error-tip {
-  font-size: 0.85rem;
-  color: var(--error-color);
-}
 
 div.mat-mdc-select-panel {
   background: #a038d8 !important; 
@@ -131,6 +98,22 @@ div.mat-mdc-select-panel {
 
 .mat-mdc-select-panel .mat-mdc-option:last-child {
   border-bottom: none;
+}
+
+.mat-calendar {
+  background-color: var(--grey-color);
+  border-radius: 10px;
+  color: var(--dark-color);
+}
+
+.mat-calendar-content {
+  background-color: var(--light-grey-color);
+  border-radius: 10px;
+  color: var(--dark-color);
+}
+
+.mat-calendar-body-cell-content.mat-focus-indicator {
+  color: var(--dark-color);
 }
 
 

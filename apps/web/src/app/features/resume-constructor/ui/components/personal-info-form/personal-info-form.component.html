@@ -1,0 +1,47 @@
+<form [formGroup]="form" class="general-form" (ngSubmit)="onSubmit()">
+  <h2 class="general-form__header">General info</h2>
+  <mat-form-field appearance="outline">
+    <mat-label class="general-form__label">First Name</mat-label>
+    <input matInput id="firstName" type="text" class="general-form__input" formControlName="firstName" />
+    @if (getControl('firstName')?.hasError('required')) {
+    <mat-error class="error-tip"> First name is required </mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label class="general-form__label">Second Name</mat-label>
+    <input matInput id="secondName" type="text" class="general-form__input" formControlName="secondName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+  <mat-label class="general-form__label">Phone number</mat-label>
+  <input
+    matInput
+    id="phoneNumber"
+    type="tel"
+    class="general-form__input"
+    formControlName="phoneNumber"
+  />
+  <mat-hint class="general-form__hint">Format:+380 XX XXX XXXX</mat-hint>
+</mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label class="general-form__label">Home Town</mat-label>
+    <input matInput id="homeTown" type="text" class="general-form__input" formControlName="homeTown" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label class="general-form__label">Date of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" class="general-form__input" formControlName="dateOfBirth" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    @if (getControl('dateOfBirth')?.hasError('required')) {
+    <mat-error class="error-tip"> Date of Birth is required </mat-error>
+    }
+  </mat-form-field>
+
+  <button mat-raised-button class="general-form__button" [disabled]="form.invalid" type="submit">
+    Update profile
+  </button>
+</form>
