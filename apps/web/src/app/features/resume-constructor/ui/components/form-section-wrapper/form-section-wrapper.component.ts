@@ -1,8 +1,8 @@
 import { Component, Input, WritableSignal } from '@angular/core';
-import { TextInputComponent } from '../../../../../shared/ui/text-input/text-input.component';
-import { TextAreaInputComponent } from '../../../../../shared/ui/text-area/textarea-input.component';
-import { DateInputComponent } from '../../../../../shared/ui/date-input/date-input.component';
-import { SelectInputComponent } from '../../../../../shared/ui/select-input/select-input.component';
+import { TextInputComponent } from '../../../../../shared/ui/inputs/text-input/text-input.component';
+import { TextAreaInputComponent } from '../../../../../shared//ui/inputs/text-area/textarea-input.component';
+import { DateInputComponent } from '../../../../../shared/ui/inputs//date-input/date-input.component';
+import { SelectInputComponent } from '../../../../../shared/ui/inputs//select-input/select-input.component';
 import { FieldConfig } from '../../../state/types/field-config.type';
 import { CamelCaseToWordsPipe } from '../../../../../shared/pipes/camel-case-to-words.pipe';
 

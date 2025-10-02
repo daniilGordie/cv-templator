@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { take } from 'rxjs';
 import { PersonalInfoService } from '../../../../../core/services/personal-info.service';
 import { IPersonalInfo } from '../../../state/types/personal-info.type';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'personal-info-form',
@@ -19,6 +20,7 @@ import { IPersonalInfo } from '../../../state/types/personal-info.type';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatButtonModule
   ],
   templateUrl: './personal-info-form.component.html',
   styleUrl: './personal-info-form.component.scss',

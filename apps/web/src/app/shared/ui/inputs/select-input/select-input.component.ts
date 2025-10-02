@@ -1,8 +1,8 @@
+import { SelectOption } from './../../../models/types/select-options.type';
 import { Component, Input, WritableSignal } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatError } from '@angular/material/form-field';
-import { SelectOption } from '../../models/types/select-options.type';
 
 @Component({
   selector: 'select-input',

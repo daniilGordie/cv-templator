@@ -1,0 +1,51 @@
+<div class="main-layout" [class.is-mobile]="isMobile()">
+  <mat-toolbar class="toolbar">
+    <div class="toolbar-left">
+      <button
+        mat-icon-button
+        class="menu-toggle"
+        (click)="toggleSidenav(drawer)"
+      >
+        <mat-icon>{{ opened ? "arrow_back_ios" : "menu" }}</mat-icon>
+      </button>
+
+      <h1 class="app-name">CV Templator</h1>
+    </div>
+
+    <div class="toolbar-right">
+      <span class="toolbar-right_email">{{ userProfileInfo()?.email }}</span>
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item>Settings</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="main-nav__container"
+    [style.marginTop.px]="isMobile() ? 56 : 0"
+  >
+    <mat-sidenav
+      #drawer
+      mode="push"
+      [fixedInViewport]="isMobile()"
+      fixedTopGap="56"
+      (openedChange)="opened = $event"
+    >
+      <mat-nav-list>
+        <ul>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Create new cover letter</a></li>
+          <li><a href="#">Templates</a></li>
+        </ul>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

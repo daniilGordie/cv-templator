@@ -1,9 +1,14 @@
 @use "./fonts";
+@use '@angular/material' as mat;
 
 :root {
+  @include mat.toolbar-overrides((
+    container-background-color: transparent,
+    container-text-color: black,
+  ));
   --dark-color: #000000;
   --light-color: #ffffff;
-  --primary-color: #d727ab;
+  --primary-color: #3027d7;
   --light-grey-color: #dedede;
   --grey-color: #b6b3b3;
   --error-color: #f44336;
@@ -27,6 +32,7 @@ h2,
 h3,
 h4,
 p,
+ul,
 li,
 figure,
 figcaption,
@@ -42,6 +48,26 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   color: var(--dark-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+a:active {
+  transform: translateY(-1px);
+}
+
+a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
 }
 
 a:not([class]) {
@@ -67,12 +93,11 @@ select {
 .mat-mdc-input-element:-webkit-autofill,
 .mat-mdc-input-element:-webkit-autofill:hover,
 .mat-mdc-input-element:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px var(--light-color) inset !important; 
+  -webkit-box-shadow: 0 0 0 1000px var(--light-color) inset !important;
   -webkit-text-fill-color: var(--dark-color);
   transition: background-color 0s ease-in-out 0s !important;
   padding-left: 10px;
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -83,12 +108,10 @@ select {
   }
 }
 
-
-
 div.mat-mdc-select-panel {
-  background: #a038d8 !important; 
+  background: #a038d8 !important;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   color: var(--light-color);
 }
 
@@ -116,6 +139,15 @@ div.mat-mdc-select-panel {
   color: var(--dark-color);
 }
 
+.main-layout, 
+.main-layout ::-webkit-scrollbar {
+  scrollbar-width: none;  
+  -ms-overflow-style: none;
+}
+
+.main-layout ::-webkit-scrollbar {
+  display: none; 
+}
 
 @media (max-width: 768px) {
   form {
