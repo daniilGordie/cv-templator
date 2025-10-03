@@ -43,7 +43,7 @@ export class MainLayoutComponent implements OnDestroy {
     this.isMobile.set(this._mobileQuery.matches);
     this._mobileQueryListener = () =>
       this.isMobile.set(this._mobileQuery.matches);
-    this._mobileQuery.addEventListener('change', this._mobileQueryListener);
+    this._mobileQuery.addEventListener('change', this._mobileQueryListener); // через media-query
   }
 
   ngOnInit(): void {

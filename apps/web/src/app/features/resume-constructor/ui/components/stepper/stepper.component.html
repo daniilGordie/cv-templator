@@ -1,0 +1,38 @@
+<mat-vertical-stepper [linear]="false" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Fill out your personal information</ng-template>
+    <personal-info-form
+      (validChange)="isPersonalFormValid = $event"
+    ></personal-info-form>
+    <div>
+      <button mat-button matStepperNext class="stepper_next-button" [disabled]="!isPersonalFormValid">
+        Next
+      </button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="generalInfoGroup">
+    <form [formGroup]="generalInfoGroup">
+      <ng-template matStepLabel>Fill out general information</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Address"
+          formControlName="secondCtrl"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button matButton matStepperPrevious>Back</button>
+        <button matButton matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Select template for CV</ng-template>
+    Here is your CV
+    <div>
+      <button matButton matStepperPrevious>Back</button>
+      <button matButton (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

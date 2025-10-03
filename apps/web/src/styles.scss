@@ -149,6 +149,15 @@ div.mat-mdc-select-panel {
   display: none; 
 }
 
+.mat-mdc-form-field-hint-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mat-mdc-form-field-bottom-align::before {
+  height: 0px !important;
+}
+
 @media (max-width: 768px) {
   form {
     padding: 1rem;

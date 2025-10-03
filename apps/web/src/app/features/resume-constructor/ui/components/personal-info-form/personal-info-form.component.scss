@@ -1,7 +1,8 @@
 .personal-form {
-  height: 87vh;
-  display: flex;
-  flex-direction: column;
+  height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  column-gap: 16px;
   align-items: stretch; 
   justify-content: flex-end;
   gap: 0.9rem;            
@@ -14,11 +15,15 @@
 }
 
 .personal-form__header {
-  align-self: center;
+  padding-top: 1.3rem;
+  justify-self: center;
+  grid-column: 1 / -1;
 }
 
 .personal-form__field {
-  width: 100%;       
+  margin-bottom: 35px;
+  width: 100%;
+  height: 0.8rem;       
 }
 
 .personal-form__input {
@@ -26,6 +31,9 @@
 }
 
 .personal-form__button {
+  grid-column: 1 / -1;
+  justify-self: center; 
+  margin-top: 16px;
   display: block;
   border: none;
   align-self: center;
@@ -40,9 +48,13 @@
   transition: all 0.3s ease;
 }
 
-.personal-form__button:hover:not(:disabled) {
+.personal-form__button:not(:disabled) {
   background-color: #1565c0; 
+  color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.personal-form__button:hover:not(:disabled) {
   transform: translateY(-2px);
 }
 
@@ -54,7 +66,19 @@
   transform: none;
 }
 
+.personal-form__button:active {
+  background-color: #1976d2;
+  color: white;
+
+  &:hover {
+    background-color: #1565c0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+}
+
 .personal-form__hint {
+  white-space: nowrap; 
   font-size: xx-small;
 }
 

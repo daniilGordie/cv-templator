@@ -1,6 +1,6 @@
 <form [formGroup]="form" class="personal-form" (ngSubmit)="onSubmit()">
   <h2 class="personal-form__header">Personal info</h2>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">First Name</mat-label>
     <input matInput id="firstName" type="text" class="personal-form__input" formControlName="firstName" />
     @if (getControl('firstName')?.hasError('required')) {
@@ -8,12 +8,12 @@
     }
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">Second Name</mat-label>
     <input matInput id="secondName" type="text" class="personal-form__input" formControlName="secondName" />
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="personal-form__field">
   <mat-label class="personal-form__label">Phone number</mat-label>
   <input
     matInput
@@ -26,12 +26,12 @@
 </mat-form-field>
 
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">Home Town</mat-label>
     <input matInput id="homeTown" type="text" class="personal-form__input" formControlName="homeTown" />
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">Date of Birth</mat-label>
     <input matInput [matDatepicker]="picker" class="personal-form__input" formControlName="dateOfBirth" />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -41,7 +41,7 @@
     }
   </mat-form-field>
 
-  <button mat-raised-button class="personal-form__button" [disabled]="form.invalid" type="submit">
+  <button mat-raised-button class="personal-form__button"  [class.personal-form__button--active]="form.valid" [disabled]="form.invalid" type="submit">
     Update profile
   </button>
 </form>

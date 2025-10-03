@@ -1,11 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { take } from 'rxjs';
+import { take, Subscription } from 'rxjs';
 import { PersonalInfoService } from '../../../../../core/services/personal-info.service';
 import { IPersonalInfo } from '../../../state/types/personal-info.type';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './personal-info-form.component.html',
   styleUrl: './personal-info-form.component.scss',
@@ -28,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
 export class PersonalInfoFormComponent {
   private fb = inject(FormBuilder);
   private personalInfoService = inject(PersonalInfoService);
+
+  @Output() validChange = new EventEmitter<boolean>(); //signal модифікатори доступу всюди
 
   form = this.fb.group({
     firstName: ['', Validators.required],
@@ -38,10 +40,15 @@ export class PersonalInfoFormComponent {
   });
 
   getControl(name: string) {
+    // повернення типів всюди
     return this.form.get(name);
   }
 
   onSubmit() {
+    this.form.statusChanges.subscribe(() => {
+      this.validChange.emit(this.form.invalid);
+    });
+
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -57,7 +64,7 @@ export class PersonalInfoFormComponent {
 
     this.personalInfoService
       .savePersonalInfo(payload)
-      .pipe(take(1))
+      .pipe(take(1)) // 2 - скільки разів виконається дія перед закінченням потоку
       .subscribe({
         next: (data) => console.log('Saved:', data),
       });
