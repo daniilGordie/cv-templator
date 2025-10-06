@@ -1,4 +1,4 @@
-<div class="main-layout" [class.is-mobile]="isMobile()">
+<div class="main-layout">
   <mat-toolbar class="toolbar">
     <div class="toolbar-left">
       <button
@@ -6,7 +6,7 @@
         class="menu-toggle"
         (click)="toggleSidenav(drawer)"
       >
-        <mat-icon>{{ opened ? "arrow_back_ios" : "menu" }}</mat-icon>
+        <mat-icon>{{ opened() ? "arrow_back_ios" : "menu" }}</mat-icon>
       </button>
 
       <h1 class="app-name">CV Templator</h1>
@@ -26,20 +26,19 @@
 
   <mat-sidenav-container
     class="main-nav__container"
-    [style.marginTop.px]="isMobile() ? 56 : 0"
   >
     <mat-sidenav
       #drawer
       mode="push"
-      [fixedInViewport]="isMobile()"
+      
       fixedTopGap="56"
-      (openedChange)="opened = $event"
+      (openedChange)="opened.set($event)"
     >
       <mat-nav-list>
         <ul>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Create new cover letter</a></li>
-          <li><a href="#">Templates</a></li>
+          <li><a>Profile</a></li>
+          <li><a>Create new cover letter</a></li>
+          <li><a>Templates</a></li>
         </ul>
       </mat-nav-list>
     </mat-sidenav>

@@ -7,7 +7,7 @@ import { MatError } from '@angular/material/form-field';
   selector: 'textarea-input',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, MatError],
-  templateUrl: './textarea-input.component.html'
+  templateUrl: './textarea-input.component.html',
 })
 export class TextAreaInputComponent {
   @Input() label!: string;
@@ -15,8 +15,8 @@ export class TextAreaInputComponent {
   @Input() errorSignal!: WritableSignal<string>;
   @Input() touchedSignal!: WritableSignal<boolean>;
 
-  onInput(event: Event) {
-  const target = event.target as HTMLTextAreaElement;
-  this.valueSignal.set(target.value);
-}
+  public onInput(event: Event): void {
+    const target = event.target as HTMLTextAreaElement;
+    this.valueSignal.set(target.value);
+  }
 }

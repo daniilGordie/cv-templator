@@ -13,11 +13,11 @@ import { CamelCaseToWordsPipe } from '../../../../../shared/pipes/camel-case-to-
   templateUrl: './form-section-wrapper.component.html'
 })
 export class FormSectionWrapperComponent {
-  @Input() sectionName!: string;
+  @Input() sectionName: string = '';
   @Input() fields: FieldConfig[] = [];
-  @Input() fieldSignals!: Record<string, {
+  @Input() fieldSignals: Record<string, {
     value: WritableSignal<string>;
     error: WritableSignal<string>;
     touched: WritableSignal<boolean>;
-  }>;
+  }> = {};
 }

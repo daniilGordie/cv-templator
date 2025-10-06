@@ -3,7 +3,7 @@
   <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">First Name</mat-label>
     <input matInput id="firstName" type="text" class="personal-form__input" formControlName="firstName" />
-    @if (getControl('firstName')?.hasError('required')) {
+    @if (getControl('firstName').hasError('required')) {
     <mat-error class="error-tip"> First name is required </mat-error>
     }
   </mat-form-field>
@@ -36,7 +36,7 @@
     <input matInput [matDatepicker]="picker" class="personal-form__input" formControlName="dateOfBirth" />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    @if (getControl('dateOfBirth')?.hasError('required')) {
+    @if (getControl('dateOfBirth').hasError('required')) {
     <mat-error class="error-tip"> Date of Birth is required </mat-error>
     }
   </mat-form-field>

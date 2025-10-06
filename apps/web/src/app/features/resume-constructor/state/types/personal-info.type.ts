@@ -3,5 +3,5 @@ export interface IPersonalInfo {
   secondName?: string;
   phoneNumber?: string;
   homeTown?: string;
-  dateOfBirth: Date | null;
+  dateOfBirth: string | null | Date;
 }

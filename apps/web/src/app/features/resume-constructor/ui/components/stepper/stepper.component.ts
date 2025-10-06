@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal, WritableSignal} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -21,8 +21,8 @@ import { PersonalInfoFormComponent } from '../personal-info-form/personal-info-f
   ],
 })
 export class StepperComponent {
-  isPersonalFormValid = false;
-  private _formBuilder = inject(FormBuilder);
+  public isPersonalFormValid: WritableSignal<boolean> = signal(false);
+  private readonly _formBuilder = inject(FormBuilder);
 
-  generalInfoGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+  public generalInfoGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 }

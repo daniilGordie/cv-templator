@@ -3,12 +3,11 @@
   @for (field of fields; track $index) {
     @if (field.type === 'text') {
       <text-input
-      [label]="field.name"
-      [valueSignal]="fieldSignals[field.name].value"
-      [errorSignal]="fieldSignals[field.name].error"
-      [touchedSignal]="fieldSignals[field.name].touched"
-    >
-    </text-input>
+  [label]="field.name"
+  [valueSignal]="fieldSignals[field.name].value"
+  [errorSignal]="fieldSignals[field.name].error"
+  [touchedSignal]="fieldSignals[field.name].touched"
+></text-input>
     }@else if (field.type === 'textarea') {
       <textarea-input
       [label]="field.name"

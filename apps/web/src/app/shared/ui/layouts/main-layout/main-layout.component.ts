@@ -1,9 +1,8 @@
 import { MatMenuModule } from '@angular/material/menu';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
@@ -26,43 +25,25 @@ import { IUserProfile } from '../../../../features/resume-constructor/state/type
     MatMenuModule
   ],
 })
-export class MainLayoutComponent implements OnDestroy {
-  private personalInfoService = inject(PersonalInfoService);
-  opened: boolean = false;
-  protected readonly isMobile = signal(true);
+export class MainLayoutComponent  {
+  private readonly personalInfoService = inject(PersonalInfoService);
+  public userProfileInfo = signal<IUserProfile | null>(null);
+  
+  public opened = signal<boolean>(false);
 
-  userProfileInfo = signal<IUserProfile | null>(null);
-
-  private readonly _mobileQuery: MediaQueryList;
-  private readonly _mobileQueryListener: () => void;
-
-  constructor() {
-    const media = inject(MediaMatcher);
-
-    this._mobileQuery = media.matchMedia('(max-width: 600px)');
-    this.isMobile.set(this._mobileQuery.matches);
-    this._mobileQueryListener = () =>
-      this.isMobile.set(this._mobileQuery.matches);
-    this._mobileQuery.addEventListener('change', this._mobileQueryListener); // через media-query
-  }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loadUserProfileInfo()
   }
 
-  toggleSidenav(drawer: MatSidenav) {
+  public toggleSidenav(drawer: MatSidenav): void  {
     drawer.toggle();
   }
 
-  private loadUserProfileInfo() {
+  private loadUserProfileInfo(): void {
     this.personalInfoService.getMyProfileById()
       .pipe(take(1))
       .subscribe({
         next: (info: IUserProfile) => this.userProfileInfo.set(info),
       });
-  }
-
-  ngOnDestroy(): void {
-    this._mobileQuery.removeEventListener('change', this._mobileQueryListener);
   }
 }

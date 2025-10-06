@@ -1,11 +1,16 @@
-import { Component, inject, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, output } from '@angular/core';
+import {
+  FormBuilder,
+  Validators,
+  ReactiveFormsModule,
+  FormControl,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { take, Subscription } from 'rxjs';
+import { take } from 'rxjs';
 import { PersonalInfoService } from '../../../../../core/services/personal-info.service';
 import { IPersonalInfo } from '../../../state/types/personal-info.type';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,13 +30,14 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './personal-info-form.component.html',
   styleUrl: './personal-info-form.component.scss',
 })
+
 export class PersonalInfoFormComponent {
-  private fb = inject(FormBuilder);
-  private personalInfoService = inject(PersonalInfoService);
+  private readonly fb = inject(FormBuilder);
+  private readonly personalInfoService = inject(PersonalInfoService);
 
-  @Output() validChange = new EventEmitter<boolean>(); //signal модифікатори доступу всюди
+  public readonly isFormSavingSuccess = output<boolean>();
 
-  form = this.fb.group({
+  readonly form = this.fb.group({
     firstName: ['', Validators.required],
     secondName: [''],
     phoneNumber: ['', Validators.pattern(/^\+?[1-9][0-9]{9,14}$/)],
@@ -39,34 +45,30 @@ export class PersonalInfoFormComponent {
     dateOfBirth: ['', Validators.required],
   });
 
-  getControl(name: string) {
-    // повернення типів всюди
-    return this.form.get(name);
+  public getControl(name: string): FormControl {
+    return this.form.get(name) as FormControl;
   }
 
-  onSubmit() {
-    this.form.statusChanges.subscribe(() => {
-      this.validChange.emit(this.form.invalid);
-    });
-
+  public onSubmit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
 
-    const payload: IPersonalInfo = {
-      firstName: this.form.value.firstName!,
-      secondName: this.form.value.secondName || undefined,
-      phoneNumber: this.form.value.phoneNumber || undefined,
-      homeTown: this.form.value.homeTown || undefined,
-      dateOfBirth: new Date(this.form.value.dateOfBirth!),
-    };
+    const payload: IPersonalInfo = this.form.value as IPersonalInfo;
 
     this.personalInfoService
       .savePersonalInfo(payload)
-      .pipe(take(1)) // 2 - скільки разів виконається дія перед закінченням потоку
+      .pipe(take(1))
       .subscribe({
-        next: (data) => console.log('Saved:', data),
+        next: () => {
+          console.log();
+          this.isFormSavingSuccess.emit(true);
+        },
+        error: (error) => {
+          console.log(error.message);
+          this.isFormSavingSuccess.emit(false);
+        }
       });
   }
 }

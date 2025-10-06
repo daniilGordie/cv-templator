@@ -2,10 +2,10 @@
   <mat-step>
     <ng-template matStepLabel>Fill out your personal information</ng-template>
     <personal-info-form
-      (validChange)="isPersonalFormValid = $event"
+      (isFormSavingSuccess)="isPersonalFormValid.set($event)"
     ></personal-info-form>
     <div>
-      <button mat-button matStepperNext class="stepper_next-button" [disabled]="!isPersonalFormValid">
+      <button mat-button matStepperNext class="stepper_next-button" [disabled]="!isPersonalFormValid()">
         Next
       </button>
     </div>

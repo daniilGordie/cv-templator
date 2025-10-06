@@ -64,3 +64,22 @@ h1.app-name {
     }
   }
 }
+
+
+@media (max-width: 600px) {
+  .toolbar {
+    position: fixed;
+    z-index: 2;
+    background-color: rgb(255, 254, 254) !important;
+  }
+
+  .main-nav__container {
+    flex: 1 0 auto;
+    margin-top: 56px; 
+  }
+
+  mat-sidenav {
+    position: fixed;
+    top: 56px;
+  }
+}
