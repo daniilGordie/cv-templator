@@ -1,0 +1,177 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="builder-form">
+  
+  <div formGroupName="profile" class="builder-form__section">
+    <h3>Profile</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  
+  <div formGroupName="workExperience" class="builder-form__section">
+    <h3>Work Experience</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Position</mat-label>
+      <input matInput formControlName="position" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">City</mat-label>
+      <input matInput formControlName="city" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Employer</mat-label>
+      <input matInput formControlName="employer" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Start Date</mat-label>
+      <input matInput [matDatepicker]="workStart" formControlName="startDate"/>
+      <mat-datepicker-toggle matSuffix [for]="workStart"></mat-datepicker-toggle>
+      <mat-datepicker #workStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">End Date</mat-label>
+      <input matInput [matDatepicker]="workEnd" formControlName="endDate"/>
+      <mat-datepicker-toggle matSuffix [for]="workEnd"></mat-datepicker-toggle>
+      <mat-datepicker #workEnd></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  
+  <div formGroupName="education" class="builder-form__section">
+    <h3>Education</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Degree</mat-label>
+      <input matInput formControlName="degree" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">City</mat-label>
+      <input matInput formControlName="city" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Institution</mat-label>
+      <input matInput formControlName="institution" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Start Date</mat-label>
+      <input matInput [matDatepicker]="eduStart" formControlName="startDate"/>
+      <mat-datepicker-toggle matSuffix [for]="eduStart"></mat-datepicker-toggle>
+      <mat-datepicker #eduStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">End Date</mat-label>
+      <input matInput [matDatepicker]="eduEnd" formControlName="endDate"/>
+      <mat-datepicker-toggle matSuffix [for]="eduEnd"></mat-datepicker-toggle>
+      <mat-datepicker #eduEnd></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  
+  <div formArrayName="languages" class="builder-form__section">
+    <h3>Languages</h3>
+    @for (lang of languages.controls; track $index) {
+      <div [formGroupName]="$index" class="form-array-row">
+      <mat-form-field appearance="outline" class="builder-form__field">
+        <mat-label class="builder-form__label">Language</mat-label>
+        <input matInput formControlName="language" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="builder-form__field">
+        <mat-label class="builder-form__label">Level</mat-label>
+        <input matInput formControlName="level" />
+      </mat-form-field>
+      <button mat-stroked-button color="warn" type="button" class="builder-form__remove-button" (click)="removeLanguage($index)">Remove</button>
+    </div>
+    }
+    <button mat-raised-button color="primary" type="button" class="builder-form__add-button" (click)="addLanguage()">Add Language</button>
+  </div>
+  
+  <div formArrayName="skills" class="builder-form__section">
+    <h3>Skills</h3>
+    @for (skill of skills.controls; track $index) {
+      <div [formGroupName]="$index" class="form-array-row">
+      <mat-form-field appearance="outline" class="builder-form__field">
+        <mat-label class="builder-form__label">Skill</mat-label>
+        <input matInput formControlName="skill" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="builder-form__field">
+        <mat-label class="builder-form__label">Level</mat-label>
+        <input matInput formControlName="level" />
+      </mat-form-field>
+      <button mat-stroked-button color="warn" type="button" class="builder-form__remove-button" (click)="removeSkill($index)">Remove</button>
+    </div>
+    }
+    
+    <button mat-raised-button color="primary" type="button" class="builder-form__add-button" (click)="addSkill()">Add Skill</button>
+  </div>
+  
+  <div formGroupName="courses" class="builder-form__section">
+    <h3>Courses</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Course</mat-label>
+      <input matInput formControlName="course" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Institution</mat-label>
+      <input matInput formControlName="institution" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Start Date</mat-label>
+      <input matInput [matDatepicker]="courseStart" formControlName="startDate"/>
+      <mat-datepicker-toggle matSuffix [for]="courseStart"></mat-datepicker-toggle>
+      <mat-datepicker #courseStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">End Date</mat-label>
+      <input matInput [matDatepicker]="courseEnd" formControlName="endDate"/>
+      <mat-datepicker-toggle matSuffix [for]="courseEnd"></mat-datepicker-toggle>
+      <mat-datepicker #courseEnd></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  
+  <div formGroupName="achievements" class="builder-form__section">
+    <h3>Achievements</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div formGroupName="interests" class="builder-form__section">
+    <h3>Interests</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Hobby</mat-label>
+      <input matInput formControlName="hobby" />
+    </mat-form-field>
+  </div>
+  
+  <div formGroupName="references" class="builder-form__section">
+    <h3>References</h3>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Company</mat-label>
+      <input matInput formControlName="company" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Contact Person</mat-label>
+      <input matInput formControlName="contactPerson" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Phone</mat-label>
+      <input matInput formControlName="phone" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="builder-form__field">
+      <mat-label class="builder-form__label">Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="accent" type="submit" class="builder-form__button">Submit</button>
+</form>

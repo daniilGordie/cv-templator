@@ -1,0 +1,82 @@
+.builder-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  max-width: 500px;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.builder-form__header {
+  grid-column: 1 / -1;
+  justify-self: center;
+  padding-top: 1.3rem;
+}
+
+.builder-form__section {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.builder-form__field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.builder-form__button,
+.builder-form__add-button,
+.builder-form__remove-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.builder-form__button {
+  grid-column: 1 / -1;
+  justify-self: center;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  background-color: #1976d2;
+  color: white;
+}
+
+.builder-form__add-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.builder-form__add-button:hover {
+  background-color: #1565c0;
+}
+
+.builder-form__remove-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+.builder-form__remove-button:hover {
+  background-color: #b71c1c;
+}
+
+@media (max-width: 600px) {
+  .builder-form__section {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-form__section > .builder-form__field {
+    grid-column: span 1;
+  }
+}

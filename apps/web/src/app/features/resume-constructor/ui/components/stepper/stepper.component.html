@@ -10,22 +10,16 @@
       </button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="generalInfoGroup">
-    <form [formGroup]="generalInfoGroup">
-      <ng-template matStepLabel>Fill out general information</ng-template>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Address"
-          formControlName="secondCtrl"
-          required
-        />
-      </mat-form-field>
+  <mat-step>
+    <ng-template matStepLabel>Fill out your General information</ng-template>
+    <resume-builder-form>
       <div>
         <button matButton matStepperPrevious>Back</button>
         <button matButton matStepperNext>Next</button>
       </div>
-    </form>
+    </resume-builder-form>
+      
+      
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Select template for CV</ng-template>

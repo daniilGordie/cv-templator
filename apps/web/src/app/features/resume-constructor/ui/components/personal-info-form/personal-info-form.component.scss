@@ -23,11 +23,7 @@
 .personal-form__field {
   margin-bottom: 35px;
   width: 100%;
-  height: 0.8rem;       
-}
-
-.personal-form__input {
-  margin-left: 0.6em;
+  height: 0.8rem;
 }
 
 .personal-form__button {
@@ -80,12 +76,14 @@
 .personal-form__hint {
   white-space: nowrap; 
   font-size: xx-small;
+  margin-top: 5px;
 }
 
 
 .error-tip {
-  font-size: 0.85rem;
+  font-size: 0.5rem;
   color: var(--error-color) !important;
+  margin-top: 5px;
 }
 
 .personal-form__label {

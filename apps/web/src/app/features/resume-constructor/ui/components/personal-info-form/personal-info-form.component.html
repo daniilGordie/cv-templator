@@ -2,7 +2,7 @@
   <h2 class="personal-form__header">Personal info</h2>
   <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">First Name</mat-label>
-    <input matInput id="firstName" type="text" class="personal-form__input" formControlName="firstName" />
+    <input matInput id="firstName" type="text" formControlName="firstName" />
     @if (getControl('firstName').hasError('required')) {
     <mat-error class="error-tip"> First name is required </mat-error>
     }
@@ -10,7 +10,7 @@
 
   <mat-form-field appearance="outline" class="personal-form__field">
     <mat-label class="personal-form__label">Second Name</mat-label>
-    <input matInput id="secondName" type="text" class="personal-form__input" formControlName="secondName" />
+    <input matInput id="secondName" type="text" formControlName="secondName" />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="personal-form__field">

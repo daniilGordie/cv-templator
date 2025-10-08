@@ -1,56 +1,56 @@
 @use "./fonts";
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 :root {
-  @include mat.toolbar-overrides((
-    container-background-color: transparent,
-    container-text-color: black,
-  ));
   --dark-color: #000000;
   --light-color: #ffffff;
-  --primary-color: #3027d7;
+  --primary-color: #275efe;
   --light-grey-color: #dedede;
   --grey-color: #b6b3b3;
   --error-color: #f44336;
+  --app-field-radius: 8px;
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: transparent,
+      container-text-color: black,
+    )
+  );
+  @include mat.form-field-overrides(
+    (
+      outlined-outline-color: var(--primary-color),
+      outlined-hover-outline-color: var(--dark-color),
+      outlined-error-outline-color: var(--error-color),
+      outlined-focus-outline-color: var(--dark-color),
+      outlined-container-shape: 8px,
+      container-height: 0.7rem,
+      container-vertical-padding: 10px,
+      container-text-weight: 100,
+      container-text-line-height: 0.2rem,
+      outlined-outline-width: 1px,
+      outlined-focus-outline-width: 1px,
+    )
+  );
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-ul[class],
-ol[class] {
-  padding: 0;
-  list-style: none;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
   margin: 0;
+  padding: 0;
 }
 
 body {
   min-height: 100vh;
+  line-height: 1.5;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
   color: var(--dark-color);
 }
 
-ul {
+ul,
+ol {
   list-style: none;
 }
 
@@ -61,17 +61,9 @@ a {
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-a:active {
-  transform: translateY(-1px);
-}
-
 a:hover {
   color: var(--primary-color);
   transform: translateY(-3px);
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
 }
 
 img {
@@ -79,95 +71,66 @@ img {
   display: block;
 }
 
-article > * + * {
-  margin-top: 1em;
+textarea {
+  min-height: 3rem;
+  resize: vertical;
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-.mat-mdc-input-element:-webkit-autofill,
-.mat-mdc-input-element:-webkit-autofill:hover,
-.mat-mdc-input-element:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px var(--light-color) inset !important;
-  -webkit-text-fill-color: var(--dark-color);
-  transition: background-color 0s ease-in-out 0s !important;
-  padding-left: 10px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-div.mat-mdc-select-panel {
-  background: #a038d8 !important;
+.mat-mdc-select-panel {
+  background: #fff !important;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  color: var(--light-color);
+  color: var(--dark-color);
 }
 
 .mat-mdc-option {
-  border-bottom: 1px solid var(--light-color);
+  border-bottom: 1px solid var(--light-grey-color);
 }
 
 .mat-mdc-select-panel .mat-mdc-option:last-child {
   border-bottom: none;
 }
 
-.mat-calendar {
-  background-color: var(--grey-color);
-  border-radius: 10px;
-  color: var(--dark-color);
-}
-
+.mat-calendar,
 .mat-calendar-content {
-  background-color: var(--light-grey-color);
-  border-radius: 10px;
+  background-color: #d2cfcf;
+  border-radius: 8px;
   color: var(--dark-color);
 }
 
-.mat-calendar-body-cell-content.mat-focus-indicator {
-  color: var(--dark-color);
-}
-
-.main-layout, 
+.main-layout,
 .main-layout ::-webkit-scrollbar {
-  scrollbar-width: none;  
+  scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
 .main-layout ::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
-.mat-mdc-form-field-hint-wrapper {
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-bottom-align::before {
   padding: 0 !important;
   margin: 0 !important;
+  height: 0 !important;
 }
 
-.mat-mdc-form-field-bottom-align::before {
-  height: 0px !important;
+.mat-mdc-form-field .mdc-floating-label:not(.mdc-floating-label--float-above) {
+  transform: translateY(20%);
+  text-align: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 0s ease-in-out 0s !important;
+  caret-color: #000 !important;
 }
 
 @media (max-width: 768px) {
   form {
     padding: 1rem;
-  }
-
-  .section-wrapper {
-    padding: 0.8rem;
-  }
-
-  .section-wrapper h1 {
-    font-size: 1.3rem;
   }
 }

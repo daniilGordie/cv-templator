@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { PersonalInfoFormComponent } from '../personal-info-form/personal-info-form.component';
+import { ResumeBuilderFormComponent } from '../resume-builder-form/resume-builder-form.component';
 
 @Component({
   selector: 'cv-constructor-stepper',
@@ -17,12 +18,13 @@ import { PersonalInfoFormComponent } from '../personal-info-form/personal-info-f
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    PersonalInfoFormComponent
+    PersonalInfoFormComponent,
+    ResumeBuilderFormComponent
   ],
 })
 export class StepperComponent {
   public isPersonalFormValid: WritableSignal<boolean> = signal(false);
-  private readonly _formBuilder = inject(FormBuilder);
+  private readonly fb = inject(FormBuilder);
 
-  public generalInfoGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+  public generalInfoGroup: FormGroup = this.fb.group({secondCtrl: ['']});
 }
